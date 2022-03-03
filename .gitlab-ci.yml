@@ -20,8 +20,7 @@ build-image:
   stage: Build
   script:
       - ls
-      - apt update
-      - apt install default-jdk
+      - apt-get -y install default-jdk
     
 package-zip:
     stage: Archive
