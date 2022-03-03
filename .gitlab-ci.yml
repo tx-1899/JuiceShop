@@ -6,7 +6,7 @@
 #  TEST_DISABLED: "true"
 #  DAST_DISABLED: "true"
 
-image: node:10.9.0
+image: node:latest
 #
 stages:
   - Build
