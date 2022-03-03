@@ -1,12 +1,12 @@
-include:
-  - template: Auto-DevOps.gitlab-ci.yml
+#include:
+ # - template: Auto-DevOps.gitlab-ci.yml
 
-variables:
-  SAST_EXCLUDED_PATHS: "frontend/src/assets/private/**"
-  TEST_DISABLED: "true"
-  DAST_DISABLED: "true"
+#variables:
+#  SAST_EXCLUDED_PATHS: "frontend/src/assets/private/**"
+#  TEST_DISABLED: "true"
+#  DAST_DISABLED: "true"
 
-  image: openjdk:8
+image: openjdk:8
 #
 stages:
   - Build
