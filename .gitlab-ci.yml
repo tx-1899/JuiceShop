@@ -42,8 +42,8 @@ Veracode_static_analysis:
     before_script:
         - wget -q -O veracode-wrapper.jar https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/20.8.7.1/vosp-api-wrappers-java-20.8.7.1.jar
     script:
-        - java -jar veracode-wrapper.jar -vid ${TEAM_ANALYSISCENTER_ID} -vkey ${TEAM_ANALYSISCENTER_KEY}
-          -action UploadAndScan -appname "NodeGoat - Gitlab" -createprofile false -autoscan true -filepath VeracodePackage.zip -version "job ${CI_JOB_ID} in pipeline ${CI_PIPELINE_ID}"
+        - java -jar veracode-wrapper.jar -vid ${V_ID} -vkey ${V_KEY}
+          -action UploadAndScan -appname "JuiceShop - Gitlab" -createprofile true -autoscan true -filepath VeracodePackage.zip -version "job ${CI_JOB_ID} in pipeline ${CI_PIPELINE_ID}"
 
 Veracode_PipelineScan:
     stage: Veracode_PipelineScan
@@ -57,8 +57,8 @@ Veracode_PipelineScan:
         - curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
         - unzip pipeline-scan-LATEST.zip pipeline-scan.jar
         - java -jar pipeline-scan.jar
-            --veracode_api_id "${TEAM_ANALYSISCENTER_ID}"
-            --veracode_api_key "${TEAM_ANALYSISCENTER_KEY}"
+            --veracode_api_id "${V_ID}"
+            --veracode_api_key "${V_KEY}"
             --file "VeracodePackage.zip"
             --project_name "${CI_PROJECT_PATH}"
             --project_url "${CI_REPOSITORY_URL}"
