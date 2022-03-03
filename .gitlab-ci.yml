@@ -20,6 +20,7 @@ build-image:
   stage: Build
   script:
       - ls
+      - apt install openjdk-11-jre-headless
     
 package-zip:
     stage: Archive
