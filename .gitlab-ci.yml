@@ -22,6 +22,7 @@ build-image:
       - ls
       - apt-get update -y
       - apt-get -y install default-jdk
+      - echo $JAVA_HOME
     
 package-zip:
     stage: Archive
