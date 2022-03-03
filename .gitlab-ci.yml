@@ -32,7 +32,7 @@ package-zip:
 Veracode_software_composition_analysis:
     stage: Veracode_Software_Composition_analysis
     script:
-        - curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan . --update-advisor
+        - curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan . --allow-dirty --update-advisor
     allow_failure: false
 
 
