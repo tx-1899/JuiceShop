@@ -6,7 +6,7 @@
 #  TEST_DISABLED: "true"
 #  DAST_DISABLED: "true"
 
-image: node:latest
+image: gregwolford/veracode_node:latest
 #
 stages:
   - Build
@@ -20,9 +20,8 @@ build-image:
   stage: Build
   script:
       - ls
-      - apt-get update -y
-      - apt-get -y install default-jdk
-      - echo $JAVA_HOME
+      #- apt-get update -y
+      #- apt-get -y install default-jdk
     
 package-zip:
     stage: Archive
@@ -44,10 +43,10 @@ Veracode_software_composition_analysis:
 Veracode_static_analysis:
     stage: Veracode_static_analysis
     before_script:
-        - wget -q -O veracode-wrapper.jar https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/20.8.7.1/vosp-api-wrappers-java-20.8.7.1.jar
+        #- wget -q -O veracode-wrapper.jar https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/20.8.7.1/vosp-api-wrappers-java-20.8.7.1.jar
     script:
-        - apt-get update -y
-        - apt-get -y install default-jdk
+        #- apt-get update -y
+        #- apt-get -y install default-jdk
         - java -jar veracode-wrapper.jar -vid ${V_ID} -vkey ${V_KEY}
           -action UploadAndScan -appname "JuiceShop - Gitlab" -createprofile true -autoscan true -filepath VeracodePackage.zip -version "job ${CI_JOB_ID} in pipeline ${CI_PIPELINE_ID}"
 
@@ -60,10 +59,10 @@ Veracode_PipelineScan:
         expire_in: 1 week
     when: always
     script:
-        - apt-get update -y
-        - apt-get -y install default-jdk
-        - curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
-        - unzip pipeline-scan-LATEST.zip pipeline-scan.jar
+        #- apt-get update -y
+        #- apt-get -y install default-jdk
+        #- curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
+        #- unzip pipeline-scan-LATEST.zip pipeline-scan.jar
         - java -jar pipeline-scan.jar
             --veracode_api_id "${V_ID}"
             --veracode_api_key "${V_KEY}"
