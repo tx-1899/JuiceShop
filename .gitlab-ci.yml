@@ -19,6 +19,7 @@ stages:
 build-image:
   stage: Build
   script:
+      - pwd
       - ls
       #- apt-get update -y
       #- apt-get -y install default-jdk
