@@ -30,14 +30,16 @@ package-zip:
         - git archive -o VeracodePackage.zip HEAD     
     artifacts:
         paths:
+            - pwd
             - VeracodePackage.zip
 
 Veracode_software_composition_analysis:
     stage: Veracode_Software_Composition_analysis
     script:
         - pwd
-        - export JAVA_OPTS="-Xms1G -Xmx3G"
-        - curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan . --allow-dirty --update-advisor
+        - ls
+        #- export JAVA_OPTS="-Xms1G -Xmx3G"
+        #- curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan . --allow-dirty --update-advisor
     allow_failure: true
 
 
@@ -46,6 +48,7 @@ Veracode_static_analysis:
     stage: Veracode_static_analysis
     before_script:
         - pwd
+        - ls
         #- wget -q -O veracode-wrapper.jar https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/20.8.7.1/vosp-api-wrappers-java-20.8.7.1.jar
     script:
         #- apt-get update -y
@@ -63,6 +66,7 @@ Veracode_PipelineScan:
     when: always
     script:
         - pwd
+        - ls
         #- apt-get update -y
         #- apt-get -y install default-jdk
         #- curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
