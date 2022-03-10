@@ -20,8 +20,8 @@ build-image:
   stage: Build
   script:
       # - wget -q -O veracode-wrapper.jar https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/22.1.9.3/vosp-api-wrappers-java-22.1.9.3.jar
-      -# curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
-      -# unzip pipeline-scan-LATEST.zip pipeline-scan.jar
+      #- curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
+      #- unzip pipeline-scan-LATEST.zip pipeline-scan.jar
       - ls
       #- apt-get update -y
       #- apt-get -y install default-jdk
