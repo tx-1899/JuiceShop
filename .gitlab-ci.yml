@@ -19,7 +19,7 @@ stages:
 build-image:
   stage: Build
   script:
-      - wget -q -O veracode-wrapper.jar https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/20.8.7.1/vosp-api-wrappers-java-20.8.7.1.jar
+      - wget -q -O veracode-wrapper.jar https://repo1.maven.org/maven2/com/veracode/vosp/api/wrappers/vosp-api-wrappers-java/22.1.9.3/vosp-api-wrappers-java-22.1.9.3.jar
       - curl -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
       - unzip pipeline-scan-LATEST.zip pipeline-scan.jar
       - ls
@@ -37,8 +37,8 @@ package-zip:
 Veracode_software_composition_analysis:
     stage: Veracode_Software_Composition_analysis
     script:
-        #- export JAVA_OPTS="-Xms1G -Xmx3G"
-        #- curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan . --allow-dirty --update-advisor
+        - export JAVA_OPTS="-Xms1G -Xmx3G"
+        - curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan . --allow-dirty --update-advisor
     allow_failure: true
 
 
